@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import { EdgeStoreProvider } from "@/edgestore/edgestore";
+import { NextUIProvider } from "@nextui-org/react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,10 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en" className='light'>
       <body
-        className={`bg-slate-50 text-gray-800 dark:bg-gray-800 dark:text-slate-50 text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl poppins.className`}
+        className={`bg-slate-50 text-gray-800 dark:bg-gray-800 dark:text-slate-50 text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl ${poppins.className}`}
       >
         <EdgeStoreProvider>
-          {children}
+          <NextUIProvider>
+            {children}
+          </NextUIProvider>
         </EdgeStoreProvider>
       </body>
     </html>
