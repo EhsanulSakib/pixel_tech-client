@@ -3,6 +3,7 @@ import "./globals.css";
 import { Poppins } from "next/font/google";
 import { EdgeStoreProvider } from "@/edgestore/edgestore";
 import { NextUIProvider } from "@nextui-org/react";
+import StoreProvider from "@/provider/StoreProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,7 +28,9 @@ export default function RootLayout({
       >
         <EdgeStoreProvider>
           <NextUIProvider>
-            {children}
+            <StoreProvider>
+              {children}
+            </StoreProvider>
           </NextUIProvider>
         </EdgeStoreProvider>
       </body>
